@@ -24,7 +24,9 @@ router.get('/programs/:id', function(req, res, next) {
 });
 
 router.put('/programs/:id', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  crud.handlePut(req.params.id, req.body.name, req.body.language, function(program){
+    res.json(program);
+  });
 });
 
 router.delete('/programs/:id', function(req, res, next) {

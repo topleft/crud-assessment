@@ -22,20 +22,26 @@ function handleGetOne(id, cb){
     if (err) return err;
     return cb(program);
   });
-
 }
 
-// function handlePut(inputName, inputLanguage){
-//   Program.findOneAndUpdate({name: inputName, language: inputLanguage}, function(){
 
-//   });
-// }
+
+function handlePut(id, inputName, inputLanguage, cb){
+  var query = {_id: id};
+  var update = {name: inputName, language: inputLanguage};
+  var option = {'new': true};
+  var updatedProgram = Program.findOneAndUpdate(query, update, option, function(err, program){
+    if (err) return err;
+    cb(program);
+  });
+}
 
 
 
 module.exports = {
   handleGet: handleGet,
   handlePost: handlePost,
-  handleGetOne: handleGetOne
+  handleGetOne: handleGetOne,
+  handlePut: handlePut
 }
 
