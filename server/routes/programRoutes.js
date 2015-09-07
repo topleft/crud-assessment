@@ -14,8 +14,10 @@ router.get('/programs', function(req, res, next) {
 
 
 router.post('/programs', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  var response = crud.handlePost(req.body.name, req.body.language);
+  res.json(response);
 });
+
 router.put('/programs/:id', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });

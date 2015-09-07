@@ -9,12 +9,24 @@ function handleGet(cb){
   });
 }
 
-function hello(){
-  return "hello";
+function handlePost(inputName, inputLanguage){
+  newProgram = new Program({name: inputName, language: inputLanguage});
+  newProgram.save(function(err){
+    if (err) return err;
+  });
+  return newProgram;
 }
 
+// function handlePut(inputName, inputLanguage){
+//   Program.findOneAndUpdate({name: inputName, language: inputLanguage}, function(){
+
+//   });
+// }
+
+
+
 module.exports = {
-  hello: hello,
-  handleGet: handleGet
+  handleGet: handleGet,
+  handlePost: handlePost
 }
 
