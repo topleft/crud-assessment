@@ -36,12 +36,20 @@ function handlePut(id, inputName, inputLanguage, cb){
   });
 }
 
+function handleDelete(id, cb){
+  Program.remove({_id: id}, function(err){
+    if (err) cb(err);
+    cb("Program removed successfully.");
+  })
+};
+
 
 
 module.exports = {
   handleGet: handleGet,
   handlePost: handlePost,
   handleGetOne: handleGetOne,
-  handlePut: handlePut
+  handlePut: handlePut,
+  handleDelete: handleDelete
 }
 

@@ -30,7 +30,9 @@ router.put('/programs/:id', function(req, res, next) {
 });
 
 router.delete('/programs/:id', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  crud.handleDelete(req.params.id, function(message){
+    res.json(message);
+  })
 });
 
 module.exports = router;
