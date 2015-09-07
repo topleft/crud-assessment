@@ -6,6 +6,21 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Program Crud' });
 });
 
+router.get('/programs', function(req, res, next) {
+  crud.handleGet(function(err, data){
+    res.json(data);
+  });
+});
 
+
+router.post('/programs', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+router.put('/programs/:id', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+router.delete('/programs/:id', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
 module.exports = router;
