@@ -17,6 +17,14 @@ function handlePost(inputName, inputLanguage){
   return newProgram;
 }
 
+function handleGetOne(id, cb){
+  Program.find({_id: id}, function(err, program){
+    if (err) return err;
+    return cb(program);
+  });
+
+}
+
 // function handlePut(inputName, inputLanguage){
 //   Program.findOneAndUpdate({name: inputName, language: inputLanguage}, function(){
 
@@ -27,6 +35,7 @@ function handlePost(inputName, inputLanguage){
 
 module.exports = {
   handleGet: handleGet,
-  handlePost: handlePost
+  handlePost: handlePost,
+  handleGetOne: handleGetOne
 }
 

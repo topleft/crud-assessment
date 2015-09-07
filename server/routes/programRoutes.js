@@ -7,20 +7,26 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/programs', function(req, res, next) {
-  crud.handleGet(function(err, data){
+  crud.handleGet(function(data){
     res.json(data);
   });
 });
-
 
 router.post('/programs', function(req, res, next) {
   var response = crud.handlePost(req.body.name, req.body.language);
   res.json(response);
 });
 
+router.get('/programs/:id', function(req, res, next) {
+  crud.handleGetOne(req.params.id, function(data){
+    res.json(data);
+  });
+});
+
 router.put('/programs/:id', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
 router.delete('/programs/:id', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
