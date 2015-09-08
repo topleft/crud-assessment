@@ -10,6 +10,32 @@
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
 
+    <form>
+      <div class="form-group">
+        <label for="program-input">Program Name</label>
+        <input type="text" class="form-control" id="program-input" placeholder="Name...">
+      </div>
+      <div class="form-group">
+        <label for="lang-input">Language</label>
+        <input type="text" class="form-control" id="lang-input" placeholder="Language...">
+      </div>
+      <button id="add-program" type="submit" class="btn btn-default">Add</button>
+    </form>
+  </div>
+  <br>
+  <div class='container'>
+    <table class="table table-striped">
+      <tr>
+        <th>
+          Program
+        </th>
+        <th>
+          Language
+        </th>
+      </tr>
+      <tbody id="results">
+      </tbody>
+    </table>
   </div>
 
 {% endblock %}
