@@ -1,25 +1,17 @@
-{% extends 'layout.html' %}
 
-{% block title %}{% endblock %}
-
-
-{% block content %}
 
   <div class="container">
-
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
 
     <form>
       <div class="form-group">
         <label for="program-input">Program Name</label>
-        <input type="text" class="form-control" id="program-input" placeholder="Name...">
+        <input type="text" class="form-control" ng-model="program.name" id="program-input" placeholder="Name...">
       </div>
       <div class="form-group">
         <label for="lang-input">Language</label>
-        <input type="text" class="form-control" id="lang-input" placeholder="Language...">
+        <input type="text" class="form-control" ng-model="program.language" id="lang-input" placeholder="Language...">
       </div>
-      <button id="add-program" type="submit" class="btn btn-default">Add</button>
+      <button id="add-program" type="submit" ng-click="post()" class="btn btn-default">Add</button>
     </form>
   </div>
   <br>
@@ -33,9 +25,16 @@
           Language
         </th>
       </tr>
+      <tr ng-repeat="program in programs">
+        <td>
+          {{program.name}}
+        </td>
+        <td>
+          {{program.language}}
+        </td>
+      </tr>
+
       <tbody id="results">
       </tbody>
     </table>
   </div>
-
-{% endblock %}
