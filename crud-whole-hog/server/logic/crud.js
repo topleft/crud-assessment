@@ -10,14 +10,14 @@ function handleGet(res) {
 		.then(function(response){ res.json(response);})
 		.catch(function(err){ res.json(err);})
 		.done();
-};
+}
 
 function handleGetOne(res, id) {
 	Item.findQ({_id: id})
 		.then(function(response){ res.json(response);})
 		.catch(function(err){ res.json(err);})
 		.done();
-};
+}
 
 function handlePost(res, name, type) {
 	newItem = new Item({name: name, type: type});
@@ -25,7 +25,7 @@ function handlePost(res, name, type) {
 		.then(function(response){ res.json(response);})
 		.catch(function(err){ res.json(err);})
 		.done();
-};
+}
 
 function handlePut(res, id, name, type) {
 	var query = {_id: id};
@@ -35,7 +35,7 @@ function handlePut(res, id, name, type) {
 		.then(function(response){ res.json(response);})
 		.catch(function(err){ res.json(err);})
 		.done();
-};
+}
 
 
 function handleDelete(res, id) {
@@ -43,7 +43,7 @@ function handleDelete(res, id) {
 		.then(function(response){ res.json({message: "Item Deleted"});})
 		.catch(function(err){ res.json(err);})
 		.done();
-};
+}
 
 module.exports = {
 	handleGet: handleGet,
@@ -51,4 +51,4 @@ module.exports = {
 	handlePost: handlePost,
 	handlePut: handlePut,
 	handleDelete: handleDelete
-}
+};
