@@ -51,6 +51,9 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 
 // *** main routes *** //
+app.get('/', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../client/public/views/', 'layout.html'));
+});
 app.use('/', routes);
 
 
