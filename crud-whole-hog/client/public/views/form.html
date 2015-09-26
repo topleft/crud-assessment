@@ -9,15 +9,15 @@
 	<form>
 	  <div class="form-group">
 	    <label for="item">Item</label>
-	    <input type="text" class="form-control" ng-model='item.name' id="name" placeholder="Item...">
+	    <input type="text" class="form-control" ng-model='newItem.name' id="name" placeholder="Item...">
 	  </div>
 	  <div class="form-group">
 	    <label for="type">Type</label>
-	    <input type="text" class="form-control" ng-model='item.type' id="type" placeholder="Type...">
+	    <input type="text" class="form-control" ng-model='newItem.type' id="type" placeholder="Type...">
 	  </div>
 	  <div>
 	  </div>
 	  <button type="submit" class="btn btn-default" ng-click='createItem()'>Submit</button>
 	</form>
-	  	<p>{{item.name}}, {{item.type}}</p>
+	  	<p>{{newItem.name}}, {{newItem.type}}</p>
 </div>

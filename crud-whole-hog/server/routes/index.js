@@ -21,7 +21,7 @@ router.put('/items/:id/:name/:type', function(req, res, next) {
 });
 
 router.delete('/items/:id', function(req, res, next) {
-	console.log("in router delete")
+	console.log("in router delete");
 	crud.handleDelete(res, req.params.id);
 });
 
