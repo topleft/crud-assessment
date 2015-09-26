@@ -1,7 +1,7 @@
-var directives = angular.module('directives', []);
+var directives = angular.module('directives', ['factories']);
 	
-	directives.directive('formTemplate',
-		function(){
+	directives.directive('formTemplate', ['crudFactory',
+		function(crudFactory){
 			return {
 				restrict: 'A',
 				scope: {
@@ -9,11 +9,12 @@ var directives = angular.module('directives', []);
 				},
 				templateUrl: '../views/form.html',
 				link: function(scope, element, attrs){
-					// scope.item.name = 'pork'; 
-					// scope.item.type = 'meat';
+					console.log(scope.item);
+					scope.createItem = function(){
+						crudFactory.createItem(scope.item.name, scope.item.type);
+					};
 					console.log("directive scope: ");
 					console.log(scope);
-					// console.log($scope.item.type);
 				}
 			};
-		});
+		}]);
