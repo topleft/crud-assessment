@@ -1,1 +1,1 @@
-angular.module("myApp", ['routes']); 
+angular.module("myApp", ['routes', 'directives']); 
