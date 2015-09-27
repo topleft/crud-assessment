@@ -1,5 +1,5 @@
 <div class='table'>
-	<table class="table table-condensed">
+	<table class="table">
 		<tr>
 			<th>Item</th>
 			<th>Type</th>
@@ -9,6 +9,8 @@
 			<td>{{ item.name }}</td>
 			<td>{{ item.type }}</td>
 			<td>{{ item._id  }}</td>
+			<td><button class='btn btn-warning' ng-click=''>update</button></td>
+			<td><button class='btn btn-danger' ng-click=''>delete</button></td>
 		</tr>
 	</table>
 </div>

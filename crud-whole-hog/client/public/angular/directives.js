@@ -5,15 +5,16 @@ var directives = angular.module('directives', ['factories']);
 			return {
 				restrict: 'A',
 				scope: {
-					newItem: '=ngModel'
+					collections: '=ngModel'
 				},
 				templateUrl: '../views/form.html',
 				link: function(scope, element, attrs){
-					console.log(scope.newItem);
+					console.log(scope.collections.newItem);
 					scope.createItem = function(){
-						crudFactory.createItem(scope.newItem.name, scope.newItem.type).
-							success(function(){
-								//push item into item array
+						crudFactory.createItem(scope.collections.newItem.name, scope.collections.newItem.type).
+							success(function(response){
+								console.log(response[0])
+							scope.collections.items.push(response[0]);
 							});
 					};
 					console.log("directive scope: ");

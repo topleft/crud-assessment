@@ -7,6 +7,7 @@ angular.module('myApp').controller("myController", ['$scope', function($scope){
 	$scope.newItem = {};
 
 	$scope.collections = {};
+	$scope.collections.newItem = {};
 
 	console.log("Controller scope: ");
 	console.log($scope);
