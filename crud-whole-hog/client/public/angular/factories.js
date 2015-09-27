@@ -1,5 +1,6 @@
-angular.module('factories', []).
-	factory('crudFactory', [ '$http', function ($http) {
+var factories = angular.module('factories', []);
+
+	factories.factory('crudFactory', [ '$http', function ($http) {
 
 		return {
 			createItem: function(name, type) {
@@ -19,4 +20,18 @@ angular.module('factories', []).
 			}
 		};
 
-}]);
+	}]);
+
+	factories.factory('frontEndDataFactory', [function(){
+		
+		return {
+			findAndDelete: function(id, items) {
+				for (var i = 0; i < items.length; i++) {
+					if (items[i]._id === id){
+						items.splice(i, 1);
+					}								
+		  	}
+		  }
+		};
+
+	}])

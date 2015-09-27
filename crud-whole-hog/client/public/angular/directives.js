@@ -24,7 +24,7 @@ var directives = angular.module('directives', ['factories']);
 		}]);
 
 
-	directives.directive('outputTemplate', [ 'crudFactory', function(crudFactory){
+	directives.directive('outputTemplate', [ 'crudFactory', 'frontEndDataFactory', function(crudFactory, frontEndDataFactory){
 			return {
 				restrict: 'A',
 				scope: {
@@ -32,7 +32,6 @@ var directives = angular.module('directives', ['factories']);
 				},
 				templateUrl: '../views/output.html',
 				link: function(scope, element, attrs){
-					// get all items
 					getAllItems();
 					function getAllItems (){
 						crudFactory.getAllItems()
@@ -44,16 +43,10 @@ var directives = angular.module('directives', ['factories']);
 					scope.deleteItem = function (id){
 						console.log(id);
 						crudFactory.deleteItem(id)
-							.success(function(){
-								var items = scope.collections.items;
-								for (var i = 0; i < items.length; i++) {
-									if (items[i]._id === id){
-										items.splice(i, 1);
-									}
-								}
-							});
+							.success(frontEndDataFactory.findAndDelete(id, scope.collections.items));
 					};
-
+				
 				}  
 			};
+
 	}]);
