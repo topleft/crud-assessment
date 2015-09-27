@@ -32,17 +32,28 @@ var directives = angular.module('directives', ['factories']);
 				},
 				templateUrl: '../views/output.html',
 				link: function(scope, element, attrs){
-					console.log('in output')
 					// get all items
 					getAllItems();
-
 					function getAllItems (){
 						crudFactory.getAllItems()
 							.success(function(response){
 								scope.collections.items = response;
-								console.log(response[4]);
 							});
 					}
+
+					scope.deleteItem = function (id){
+						console.log(id);
+						crudFactory.deleteItem(id)
+							.success(function(){
+								var items = scope.collections.items;
+								for (var i = 0; i < items.length; i++) {
+									if (items[i]._id === id){
+										items.splice(i, 1);
+									}
+								}
+							});
+					};
+
 				}  
 			};
 	}]);

@@ -15,7 +15,7 @@ angular.module('factories', []).
 				return $http.put('/items/'+id+'/'+name+'/'+type);
 			},
 			deleteItem: function(id) {
-				$http.delete('items/'+id);
+				return $http.delete('items/'+id);
 			}
 		};
 
