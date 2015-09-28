@@ -41,12 +41,37 @@ var directives = angular.module('directives', ['factories']);
 					}
 
 					scope.deleteItem = function (id){
-						console.log(id);
 						crudFactory.deleteItem(id)
 							.success(frontEndDataFactory.findAndDelete(id, scope.collections.items));
+					};
+
+
+
+					scope.toggleUpdate = function(id) {
+						scope.update = id;
+
+					};
+
+					scope.updateItem = function(id, name, type) {
+						crudFactory.updateItem(id, name, type)
+							.success(function(response){
+								console.log(response);
+								scope.update = false;
+							});
 					};
 				
 				}  
 			};
 
 	}]);
+
+
+	directives.directive('navTemplate', [function(){
+		return {
+			restrict: 'A',
+			templateUrl: '../views/nav.html',
+			link: function(scope, element, attrs){
+				console.log('nav')
+			}
+		}
+	}])

@@ -9,4 +9,9 @@ a {
 
 .table>tbody>tr>td {
 	vertical-align: middle;
+	width: 45%;
+}
+
+.output .btn {
+	width: 100%;
 }

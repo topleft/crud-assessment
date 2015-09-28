@@ -38,7 +38,7 @@ var notify = require('gulp-notify');
 // });
 
 gulp.task('nodemon', function(){
-	livereload.listen()
+	livereload.listen();
 	nodemon({
 		script: 'server/bin/www',
 		ext: 'js' 
@@ -55,6 +55,8 @@ gulp.task('jshint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
+
+
 
 gulp.task('watch', function() {
   gulp.watch(['client/public/js/*.js', 'client/public/angular/*.js'], ['jshint']); // update path!
