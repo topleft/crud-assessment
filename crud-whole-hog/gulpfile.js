@@ -57,7 +57,6 @@ gulp.task('jshint', function() {
 });
 
 
-
 gulp.task('watch', function() {
   gulp.watch(['client/public/js/*.js', 'client/public/angular/*.js'], ['jshint']); // update path!
 });

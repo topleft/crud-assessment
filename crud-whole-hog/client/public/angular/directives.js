@@ -14,7 +14,8 @@ var directives = angular.module('directives', ['factories']);
 						crudFactory.createItem(scope.collections.newItem.name, scope.collections.newItem.type).
 							success(function(response){
 							scope.collections.items.push(response[0]);
-							scope.action.message = "Success! Item added to database."
+							scope.action.message = "Success! Item added to database.";
+							scope.action.bootstrap = 'alert-success';
 							});
 					};
 					console.log("directive scope: ");
@@ -45,6 +46,7 @@ var directives = angular.module('directives', ['factories']);
 						crudFactory.deleteItem(id)
 							.success(function(){frontEndDataFactory.findAndDelete(id, scope.collections.items);
 								scope.action.message = "Success! Item deleted from the database";
+								scope.action.bootstrap = 'alert-success';
 							});
 					};
 
@@ -59,6 +61,7 @@ var directives = angular.module('directives', ['factories']);
 						crudFactory.updateItem(id, name, type)
 							.success(function(response){
 								scope.action.message = "Success! Item updated in the database";
+								scope.action.bootstrap = 'alert-success';
 								scope.update = false;
 							});
 					};
@@ -74,7 +77,15 @@ var directives = angular.module('directives', ['factories']);
 			restrict: 'A',
 			templateUrl: '../views/nav.html',
 			link: function(scope, element, attrs){
-				console.log('nav')
+				console.log('nav');
 			}
-		}
-	}])
+		};
+	}]);
+
+	directives.directive('messageTemplate', [function(){
+		return {
+			restrict: 'A',
+			templateUrl: '../views/message.html'
+			};
+	}]);
+
