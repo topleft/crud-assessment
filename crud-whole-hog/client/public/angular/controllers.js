@@ -4,7 +4,7 @@ angular.module('myApp').controller("myController", ['$scope', function($scope){
 	
 	$scope.title = "The Whole Hog";
   $scope.action = {};
-  $scope.action.bootstrap = "panel-success";
+  $scope.action.bootstrap = "";
 	$scope.action.message = "";
 	$scope.collections = {};
 	$scope.collections.newItem = {};

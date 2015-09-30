@@ -4,20 +4,27 @@ var directives = angular.module('directives', ['factories']);
 		function(crudFactory){
 			return {
 				restrict: 'A',
+				scope: {
+					collections: '=',
+					action: '='
+				},
 				templateUrl: '../views/form.html',
-				link: function(scope, element, attrs){
-					scope.createItem = function(){
-						crudFactory.createItem(scope.collections.newItem.name, scope.collections.newItem.type).
+				controller: function($scope, crudFactory){
+					console.log("form controller")
+					$scope.items = angular.copy($scope.collections);
+					
+					$scope.addItem = function(){
+						crudFactory.createItem($scope.collections.newItem.name, $scope.collections.newItem.type).
 							success(function(response){
-							scope.collections.items.push(response[0]);
-							scope.action.message = "Success! Item added to database.";
-							scope.action.bootstrap = 'alert-success';
-							scope.collections.newItem.name = "";
-							scope.collections.newItem.type = "";
+							$scope.collections.items.push(response[0]);
+							$scope.action.message = "Success! Item added to database.";
+							$scope.action.bootstrap = 'alert-success';
+							$scope.collections.newItem.name = "";
+							$scope.collections.newItem.type = "";
 							});
 					};
-					console.log("directive scope: ");
-					console.log(scope);
+					console.log("directive $scope: ");
+					console.log($scope);
 				}
 			};
 		}]);
@@ -27,40 +34,40 @@ var directives = angular.module('directives', ['factories']);
 			return {
 				restrict: 'A',
 				scope: {
-					collections: '=ngModel',
-					action: '=ngModel'
+					collections: '=',
+					action: '='
 				},
 				templateUrl: '../views/output.html',
-				link: function(scope, element, attrs){
+				controller: function($scope, crudFactory, frontEndDataFactory){
 					getAllItems();
 					function getAllItems (){
 						crudFactory.getAllItems()
 							.success(function(response){
-								scope.collections.items = response;
+								$scope.collections.items = response;
 							});
 					}
 
-					scope.deleteItem = function (id){
+					$scope.deleteItem = function (id){
 						crudFactory.deleteItem(id)
-							.success(function(){frontEndDataFactory.findAndDelete(id, scope.collections.items);
-								scope.action.message = "Success! Item deleted from the database";
-								scope.action.bootstrap = 'alert-success';
+							.success(function(){frontEndDataFactory.findAndDelete(id, $scope.collections.items);
+								$scope.action.message = "Success! Item deleted from the database";
+								$scope.action.bootstrap = 'alert-success';
 							});
 					};
 
 
 
-					scope.toggleUpdate = function(id) {
-						scope.update = id;
+					$scope.toggleUpdate = function(id) {
+						$scope.update = id;
 
 					};
 
-					scope.updateItem = function(id, name, type) {
+					$scope.updateItem = function(id, name, type) {
 						crudFactory.updateItem(id, name, type)
 							.success(function(response){
-								scope.action.message = "Success! Item updated in the database";
-								scope.action.bootstrap = 'alert-success';
-								scope.update = false;
+								$scope.action.message = "Success! Item updated in the database";
+								$scope.action.bootstrap = 'alert-success';
+								$scope.update = false;
 							});
 					};
 				

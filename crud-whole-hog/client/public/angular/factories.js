@@ -25,6 +25,9 @@ var factories = angular.module('factories', []);
 	factories.factory('frontEndDataFactory', [function(){
 		
 		return {
+			add: function(arr, item){
+				arr.push(item);
+			},
 			findAndDelete: function(id, items) {
 				for (var i = 0; i < items.length; i++) {
 					if (items[i]._id === id){
