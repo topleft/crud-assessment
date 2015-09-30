@@ -4,10 +4,6 @@ var directives = angular.module('directives', ['factories']);
 		function(crudFactory){
 			return {
 				restrict: 'A',
-				scope: {
-					collections: '=ngModel',
-					action: '=ngModel'
-				},
 				templateUrl: '../views/form.html',
 				link: function(scope, element, attrs){
 					scope.createItem = function(){
@@ -16,6 +12,8 @@ var directives = angular.module('directives', ['factories']);
 							scope.collections.items.push(response[0]);
 							scope.action.message = "Success! Item added to database.";
 							scope.action.bootstrap = 'alert-success';
+							scope.collections.newItem.name = "";
+							scope.collections.newItem.type = "";
 							});
 					};
 					console.log("directive scope: ");
