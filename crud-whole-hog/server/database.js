@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var passportLocalMongoose = require('passport-local-mongoose')
+var passportLocalMongoose = require('passport-local-mongoose');
 
 var itemSchema = new Schema ({
 	name: String,
