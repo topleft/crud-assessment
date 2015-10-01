@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 var swig = require('swig');
 var mongoose = require('mongoose');
 var http = require("http");
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 
 // *** routes *** //
@@ -38,6 +40,7 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 
 
+
 // *** static directory *** //
 app.set('views', path.join(__dirname, 'views'));
 
@@ -49,12 +52,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // *** main routes *** //
 app.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../client/public/views/', 'layout.html'));
 });
 app.use('/', routes);
+
+// passport config
+var User = require('./database').User;
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.deserializeUser());
+
 
 
 // catch 404 and forward to error handler

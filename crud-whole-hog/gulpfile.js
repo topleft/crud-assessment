@@ -5,37 +5,6 @@ var livereload = require('gulp-livereload');
 var nodemon = require('gulp-nodemon');
 var notify = require('gulp-notify');
 
-// var paths = {
-// 	client: [
-// 	'client/public/**/*.js',
-// 	'client/public/views/*.html',
-// 	'client/public/css/*.css'
-// 	],
-// 	server: {
-// 		index: 'app.js'
-// 	}
-// };
-
-// nodemon config
-// var nodemonConfig = {
-// 	env: {
-// 		"NODE_ENV" : "development"
-// 	}
-// };
-
-// // use nodemon running from the server
-// gulp.task('serve', function(){
-// 	return nodemon (nodemonConfig);
-// });
-
-// // when the client file are being monitored, changes refresh browser
-// gulp.task('livereload', function(){
-// 	livereload.listen();
-// 	var server = livereload;
-// 	return gulp.watch(paths.client, function(e){
-// 		livereload.changed(e.path);
-// 	});
-// });
 
 gulp.task('nodemon', function(){
 	livereload.listen();
