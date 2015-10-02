@@ -87,3 +87,22 @@ var directives = angular.module('directives', ['factories']);
 			};
 	}]);
 
+	directives.directive('logoutButton', ['authFactory', '$location', function(authFactory, $location){
+		return {
+			restrict: 'E',
+			scope: {
+				logout: '='
+			},
+			templateUrl: '../views/logout.html',
+			controller: function($scope, $location){
+				// console.log('logout Dir');
+				$scope.logout = function(){
+						authFactory.logoutUser()
+						.then(function(){
+							$location.path("/login");
+						});			
+				}
+			}
+		}
+	}]);
+
