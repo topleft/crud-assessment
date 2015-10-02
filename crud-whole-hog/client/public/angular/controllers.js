@@ -25,7 +25,7 @@ app.controller("registerController", ['$scope', function($scope){
 
 
 app.controller("loginController", ['$scope', '$location', 'authFactory', function($scope, $location,authFactory){
-	console.log(authFactory.getUserStatus());
+	console.log('user logged in?', authFactory.getUserStatus());
 
 	$scope.login = function(){
 		$scope.error = false;
@@ -47,21 +47,30 @@ app.controller("loginController", ['$scope', '$location', 'authFactory', functio
 	}
 }]);
 
+app.controller("registerController", ['$scope', '$location', 'authFactory', function($scope, $location,authFactory){
+	console.log(authFactory.getUserStatus());
 
-// app.controller("logoutController", ['$scope', '$location', 'authFactory', function($scope, $location, authFactory){
-// 	console.log("logout controller");
-// 	$scope.auth = {};
-// 	$scope.auth.logout = function(){
-// 		authFactory.logoutUser()
-// 		.then(function(){
-// 			$location.path("/login");
-// 		});
-// 	};
+	$scope.register = function(){
+		$scope.error = false;
+		$scope.disable = true;
+		console.log($scope.register.username, $scope.register.password);
+		authFactory.registerUser($scope.register.username, $scope.register.password)
+			.then(function(){
+				$location.path('/');
+				$scope.diabled = false;
+				$scope.register = {};
+			})
+			.catch(function(){
+				$scope.error = true;
+					$scope.errorMessage = "Oops. Something went wrong!";
+					$scope.disabled= false;
+					$scope.register = {};
+			});
+
+	}
+}]);
 
 
-
-
-// }]);
 
 
 

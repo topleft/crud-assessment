@@ -95,14 +95,13 @@ var directives = angular.module('directives', ['factories']);
 			},
 			templateUrl: '../views/logout.html',
 			controller: function($scope, $location){
-				// console.log('logout Dir');
 				$scope.logout = function(){
 						authFactory.logoutUser()
 						.then(function(){
 							$location.path("/login");
 						});			
-				}
+				};
 			}
-		}
+		};
 	}]);
 
