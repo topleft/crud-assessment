@@ -1,4 +1,4 @@
-var Item = require("../database.js");
+var Item = require("../database.js").Item;
 var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
 
 
