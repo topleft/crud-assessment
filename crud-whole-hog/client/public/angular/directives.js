@@ -10,9 +10,7 @@ var directives = angular.module('directives', ['factories']);
 				},
 				templateUrl: '../views/form.html',
 				controller: function($scope, crudFactory){
-					console.log("form controller")
 					$scope.items = angular.copy($scope.collections);
-					
 					$scope.addItem = function(){
 						crudFactory.createItem($scope.collections.newItem.name, $scope.collections.newItem.type).
 							success(function(response){
