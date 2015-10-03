@@ -11,17 +11,8 @@ app.controller("myController", ['$scope', function($scope){
 	$scope.collections = {};
 	$scope.collections.newItem = {};
 	$scope.update = false;
-	console.log("Controller scope: ");
-	console.log($scope);
 }]);
 
-
-app.controller("registerController", ['$scope', function($scope){
-	console.log("register controller");
-
-
-
-}]);
 
 
 app.controller("loginController", ['$scope', '$location', 'authFactory', function($scope, $location,authFactory){

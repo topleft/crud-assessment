@@ -4,6 +4,7 @@ var factories = angular.module('factories', []);
 
 		return {
 			createItem: function(name, type) {
+				// console.log(name, type)
 				return $http.post('/items/'+name+'/'+type);
 			},
 			getItem: function(id) {
@@ -17,6 +18,17 @@ var factories = angular.module('factories', []);
 			},
 			deleteItem: function(id) {
 				return $http.delete('items/'+id);
+			},
+			isValidItem: function(name, type, items){
+				name = name.toLowerCase();
+				type = type.toLowerCase();
+
+				for (var i = 0; i < items.length; i++) {
+					if (items[i].name.toLowerCase() === name && items[i].type.toLowerCase() === type) {
+						return false;
+					}
+				}
+				return true;
 			}
 		};
 
