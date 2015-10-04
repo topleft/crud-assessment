@@ -18,7 +18,6 @@ angular.module('directives').directive('formTemplate', ['crudFactory', 'alertFac
 							$scope.collections.items.push(response[0]);
 							$scope.collections.newItem = {};
 							alertFactory.add("success", "Success! Item ADDED to database.");
-
 							});
 						}
 						else{

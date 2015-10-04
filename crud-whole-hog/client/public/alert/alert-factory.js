@@ -1,5 +1,5 @@
 angular.module('factories').factory('alertFactory', [ '$timeout', "$animate", function($timeout, $animate){
-		var alerts = [{mesage: " "}];
+		var alerts = [];
 
 		return {
 			add: function (type, msg) {
@@ -12,10 +12,10 @@ angular.module('factories').factory('alertFactory', [ '$timeout', "$animate", fu
       	};
       	console.log(alert)
       	$timeout(this.closeAlert, 3000, true, alert);
-      	return alerts[0] = (alert);
+      	return alerts.push(alert);
        },
 			closeAlert: function(alert){
-				return alerts[0] = {message: " "};
+				return alerts.splice(alerts.indexOf(alert), 1);
 			},
 			get: function(){
 				return alerts;

@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('outputTemplate', [ 'crudFactory', 'frontEndDataFactory', function(crudFactory, frontEndDataFactory){
+	.directive('outputTemplate', [ 'crudFactory', 'frontEndDataFactory', 'alertFactory', function(crudFactory, frontEndDataFactory, alertFactory){
 			return {
 				restrict: 'A',
 				scope: {
@@ -19,8 +19,7 @@ angular.module('directives')
 					$scope.deleteItem = function (id){
 						crudFactory.deleteItem(id)
 							.success(function(){frontEndDataFactory.findAndDelete(id, $scope.collections.items);
-								$scope.action.message = "Success! Item deleted from the database";
-								$scope.action.bootstrap = 'alert-success';
+								alertFactory.add('success', "Success! Item DELETED from the database")
 							});
 					};
 
@@ -34,10 +33,9 @@ angular.module('directives')
 					$scope.updateItem = function(id, name, type) {
 						crudFactory.updateItem(id, name, type)
 							.success(function(response){
-								$scope.action.message = "Success! Item updated in the database";
-								$scope.action.bootstrap = 'alert-success';
+								alertFactory.add('success', "Success! Item UPDATED in the database.");
 								$scope.update = false;
-							});
+							})
 					};
 				
 				}  

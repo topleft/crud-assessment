@@ -27,6 +27,19 @@ input.form-control {
 }
 
 
+/*-------------------*/
+/*  alert styles   */
+/*-----------------*/
+.space-holder {
+	min-height: 8rem;
+}
+
+.alert {
+	background-color: rgba(100,100,100, .5);
+	color: #777;
+	border-width: .2rem;
+}
+
 
 /*-------------------*/
 /*  output styles   */
