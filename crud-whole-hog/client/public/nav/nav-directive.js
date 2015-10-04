@@ -9,9 +9,3 @@ angular.module('directives')
 		};
 	}]);
 
-	directives.directive('messageTemplate', [function(){
-		return {
-			restrict: 'A',
-			templateUrl: '../views/message.html'
-			};
-	}]);

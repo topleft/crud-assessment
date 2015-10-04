@@ -20,8 +20,9 @@ var factories = angular.module('factories', []);
 				return $http.delete('items/'+id);
 			},
 			isValidItem: function(name, type, items){
-				name = name.toLowerCase();
-				type = type.toLowerCase();
+
+				var name = name.toLowerCase();
+				var type = type.toLowerCase();
 
 				for (var i = 0; i < items.length; i++) {
 					if (items[i].name.toLowerCase() === name && items[i].type.toLowerCase() === type) {
