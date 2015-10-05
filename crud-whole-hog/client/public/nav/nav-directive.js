@@ -4,7 +4,6 @@ angular.module('directives')
 			restrict: 'A',
 			templateUrl: 'nav/nav.html',
 			link: function(scope, element, attrs){
-				console.log('nav');
 			}
 		};
 	}]);

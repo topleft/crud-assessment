@@ -34,8 +34,6 @@ angular.module('directives')
 
 					$scope.toggleUpdate = function(id) {
 						$scope.update = id;
-						console.log(id)
-						console.log($scope.update)
 
 					};
 
