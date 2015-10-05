@@ -24,6 +24,7 @@ input.form-control {
 .btn  {
 	background-color: rgba(100,100,100, .5);
 	color: #777;
+	min-width: 8rem;
 }
 
 

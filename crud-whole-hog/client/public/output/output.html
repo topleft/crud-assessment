@@ -27,7 +27,9 @@
 				
 				<td ng-show='update === item._id'><button type='submit' class='btn btn-info' ng-click='updateItem(item._id, item.name, item.type)'>save</button></td>
 
-				<td><button class='btn btn-danger' ng-click='deleteItem(item._id)'>delete</button></td>
+				<td ng-show="action.id !== item._id" ><button class='btn btn-danger' ng-click='doubleCheckDelete(item._id)'>delete</button></td>
+
+				<td ng-show="action.id === item._id" ><button class='btn btn-danger' ng-click='deleteItem(item._id)'>confirm</button></td>
 
 			</tr>
 		</table>

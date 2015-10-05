@@ -16,10 +16,17 @@ angular.module('directives')
 							});
 					}
 
+					$scope.action.delete=false;
+
+					$scope.doubleCheckDelete = function(id){
+						$scope.action.id = id;
+					}
+
 					$scope.deleteItem = function (id){
 						crudFactory.deleteItem(id)
 							.success(function(){frontEndDataFactory.findAndDelete(id, $scope.collections.items);
 								alertFactory.add('success', "Success! Item DELETED from the database")
+								$scope.action.id = false;
 							});
 					};
 
@@ -27,6 +34,8 @@ angular.module('directives')
 
 					$scope.toggleUpdate = function(id) {
 						$scope.update = id;
+						console.log(id)
+						console.log($scope.update)
 
 					};
 
