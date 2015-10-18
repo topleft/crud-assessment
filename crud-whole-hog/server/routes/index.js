@@ -4,7 +4,7 @@ var crud = require("../logic/crud.js");
 var db = require('../database.js');
 // var user = require('../database.js').User;
 var passport = require('passport');
-var local = require('passport-local')
+var local = require('passport-local');
 
 
 router.get('/items', function(req, res, next) {

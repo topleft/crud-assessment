@@ -12,7 +12,12 @@
 * highly modular
 * custom directives
 * isolated scopes
-* simple, effective UX for CRUD operations
+* simple, effective UI for CRUD operations
 	* in-place updating
 	* delete confirmation
 	* self clearing, infomative alerts
+
+
+#### Angular Directives
+
+* Link vs. Scope
