@@ -7,12 +7,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var http = require("http");
 
 
 // *** routes *** //
 var routes = require('./routes/index.js');
+var todoRoutes = require('./routes/todoRoutes.js');
 
 
 // *** express instance *** //
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 // *** main routes *** //
 app.use('/', routes);
+app.use('/todos', todoRoutes);
 
 
 // catch 404 and forward to error handler
